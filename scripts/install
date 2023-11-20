@@ -1,0 +1,78 @@
+#!/bin/bash
+
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
+source _common.sh
+source /usr/share/yunohost/helpers
+
+email=$(ynh_user_get_info --username=$admin --key=mail)
+firstname=$(yunohost user list --fields firstname --output-as json | jq  -r .users.$admin.firstname)
+lastname=$(yunohost user list --fields lastname --output-as json | jq  -r .users.$admin.lastname)
+timezone=$(cat /etc/timezone)
+
+#=================================================
+# APP "BUILD" (DEPLOYING SOURCES, VENV, COMPILING ETC)
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression --message="Setting up source files..." --weight=1
+
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir"
+
+chown -R $app:www-data "$install_dir"
+usermod -g www-data $app
+find $install_dir -type f -exec chmod 664 {} \;    
+find $install_dir -type d -exec chmod 775 {} \;
+
+#=================================================
+# SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+
+# Create a dedicated PHP-FPM config using the conf/php-fpm.conf or conf/extra_php-fpm.conf
+ynh_add_fpm_config
+
+# Create a dedicated NGINX config using the conf/nginx.conf template
+ynh_add_nginx_config
+
+ynh_add_config --template="cron" --destination="/etc/cron.d/$app"
+chown root: "/etc/cron.d/$app"
+chmod 644 "/etc/cron.d/$app"
+
+#=================================================
+# APP INITIAL CONFIGURATION
+#=================================================
+# ADD A CONFIGURATION
+#=================================================
+ynh_script_progression --message="Adding a configuration file..." --weight=1
+
+ynh_add_config --template=".env.example" --destination="$install_dir/.env"
+
+chmod 600 "$install_dir/.env"
+chown $app:$app "$install_dir/.env"
+
+#=================================================
+# FINAL FREESCOUT INSTALL
+#=================================================
+ynh_script_progression --message="Install $app" --weight=5
+
+pushd $install_dir
+	php$phpversion artisan key:generate --no-interaction --force
+	php$phpversion artisan freescout:clear-cache
+	php$phpversion artisan storage:link
+	php$phpversion artisan migrate --no-interaction --force
+	php$phpversion artisan freescout:create-user --role=admin --firstName=$firstname --lastName=$lastname --email=$email --password=$password --no-interaction
+	
+	chgrp -R www-data storage bootstrap/cache public/css/builds public/js/builds
+	chmod -R ug+rwx storage bootstrap/cache public/css/builds public/js/builds
+popd
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+ynh_script_progression --message="Installation of $app completed" --last
