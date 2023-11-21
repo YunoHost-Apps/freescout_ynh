@@ -26,6 +26,10 @@ FreeScout est un service d'assistance open source gratuit ultra léger et puissa
 
 ![Capture d’écran de FreeScout](./doc/screenshots/screenshot.png)
 
+## :red_circle: Fonctions indésirables
+
+- **Not totally free upstream**: The packaged app is under an overall free licence, but with clauses that restrict its use.
+
 ## Documentations et ressources
 
 * Site officiel de l’app : <https://freescout.net/>

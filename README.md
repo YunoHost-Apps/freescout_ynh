@@ -26,6 +26,10 @@ FreeScout is the super lightweight and powerful free open source help desk and s
 
 ![Screenshot of FreeScout](./doc/screenshots/screenshot.png)
 
+## :red_circle: Antifeatures
+
+- **Not totally free upstream**: The packaged app is under an overall free licence, but with clauses that restrict its use.
+
 ## Documentation and resources
 
 * Official app website: <https://freescout.net/>
