@@ -26,6 +26,7 @@ ynh_setup_source --dest_dir="$install_dir"
 
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
+
 usermod -g www-data $app
 find $install_dir -type f -exec chmod 664 {} \;    
 find $install_dir -type d -exec chmod 775 {} \;
