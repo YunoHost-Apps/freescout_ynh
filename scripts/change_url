@@ -9,6 +9,7 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
+
 #=================================================
 # MODIFY URL IN NGINX CONF
 #=================================================
@@ -21,7 +22,11 @@ ynh_change_url_nginx_config
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_replace_string --match_string="APP_URL=https://*" --replace_string="APP_URL=https://$new_domain" --target_file=$install_dir/.env
+ynh_replace_string --match_string="APP_URL=https://$old_domain" --replace_string="APP_URL=https://$new_domain" --target_file=$install_dir/.env
+
+pushd $install_dir
+	php$phpversion artisan freescout:clear-cache
+popd
 
 #=================================================
 # END OF SCRIPT
