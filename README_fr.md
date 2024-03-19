@@ -17,7 +17,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 ## Vue d’ensemble
 
 FreeScout est un service d'assistance open source gratuit ultra léger et puissant et une boîte de réception partagée construite avec PHP (framework Laravel). Vous pouvez désormais profiter gratuitement de Zendesk et Help Scout sans renoncer à votre confidentialité ni vous enfermer dans un service que vous ne contrôlez pas.
-**Version incluse :** 1.8.126~ynh1
+**Version incluse :** 1.8.127~ynh1
 
 **Démo :** <https://demo.freescout.net/login>
 
@@ -27,7 +27,7 @@ FreeScout est un service d'assistance open source gratuit ultra léger et puissa
 
 ## :red_circle: Anti-fonctionnalités
 
-- **Not totally free upstream** : The packaged app is under an overall free licence, but with clauses that restrict its use.
+- **Application sous licence libre restreinte** : L'application packagée est sous une licence globalement libre, mais avec des clauses qui pourraient restreindre son utilisation.
 
 ## Documentations et ressources
 
@@ -43,7 +43,7 @@ Merci de faire vos pull request sur la [branche testing](https://github.com/Yuno
 
 Pour essayer la branche testing, procédez comme suit.
 
-``` bash
+```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/freescout_ynh/tree/testing --debug
 ou
 sudo yunohost app upgrade freescout -u https://github.com/YunoHost-Apps/freescout_ynh/tree/testing --debug
