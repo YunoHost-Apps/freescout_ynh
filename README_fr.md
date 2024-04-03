@@ -18,7 +18,7 @@ Il NE doit PAS être modifié à la main.
 
 FreeScout est un service d'assistance open source gratuit ultra léger et puissant et une boîte de réception partagée construite avec PHP (framework Laravel). Vous pouvez désormais profiter gratuitement de Zendesk et Help Scout sans renoncer à votre confidentialité ni vous enfermer dans un service que vous ne contrôlez pas.
 
-**Version incluse :** 1.8.127~ynh1
+**Version incluse :** 1.8.130~ynh1
 
 **Démo :** <https://demo.freescout.net/login>
 
@@ -28,7 +28,7 @@ FreeScout est un service d'assistance open source gratuit ultra léger et puissa
 
 ## :red_circle: Anti-fonctionnalités
 
-- **Application sous licence libre restreinte**: L'application packagée est sous une licence globalement libre, mais avec des clauses qui pourraient restreindre son utilisation.
+- **Application sous licence libre restreinte **: L'application packagée est sous une licence globalement libre, mais avec des clauses qui pourraient restreindre son utilisation.
 
 ## Documentations et ressources
 
