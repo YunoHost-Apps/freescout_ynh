@@ -1,31 +1,32 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
 source _common.sh
 source /usr/share/yunohost/helpers
 
-email=$(ynh_user_get_info --username=$admin --key=mail)
-firstname=$(ynh_user_get_info --username=$admin --key=firstname)
-lastname=$(ynh_user_get_info --username=$admin --key=lastname)
-
 #=================================================
-# "REBUILD" THE APP (DEPLOY NEW SOURCES, RERUN NPM BUILD...)
+# INITIALIZE AND STORE SETTINGS
+#=================================================
+
+email=$(ynh_user_get_info --username="$admin" --key="mail")
+firstname=$(ynh_user_get_info --username="$admin" --key="firstname")
+lastname=$(ynh_user_get_info --username="$admin" --key="lastname")
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Upgrading source files..." --weight=1
 
-ynh_secure_remove --file="/$install_dir/vendor"
+# FIXME: use --full_replace=1
+ynh_secure_remove --file="$install_dir/vendor"
 
-ynh_setup_source --dest_dir="$install_dir" --keep='.env' #--full_replace=1
+ynh_setup_source --dest_dir="$install_dir" --keep=".env" #--full_replace=1
 
 chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
+chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -37,25 +38,13 @@ ynh_add_fpm_config
 ynh_add_nginx_config
 
 #=================================================
-# RECONFIGURE THE APP (UPDATE CONF, APPLY MIGRATIONS...)
-#=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-#ynh_script_progression --message="Updating a configuration file..." --weight=1
-
-#ynh_add_config --template=".env.example" --destination="$install_dir/.env"
-
-#chmod 400 "$install_dir/.env"
-#chown $app:$app "$install_dir/.env"
-
-#=================================================
 # FINAL FREESCOUT INSTALL
 #=================================================
 ynh_script_progression --message="Install $app" --weight=5
 
-pushd $install_dir
-	php$phpversion artisan freescout:clear-cache
-	php$phpversion artisan migrate --no-interaction --force
+pushd "$install_dir"
+    "php$phpversion" artisan freescout:clear-cache
+    "php$phpversion" artisan migrate --no-interaction --force
 popd
 
 #=================================================
