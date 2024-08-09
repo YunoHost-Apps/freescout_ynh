@@ -18,7 +18,7 @@ Ini TIDAK boleh diedit dengan tangan.
 
 FreeScout is the super lightweight and powerful free open source help desk and shared inbox built with PHP (Laravel framework). Now you can enjoy free Zendesk & Help Scout without giving up privacy or locking yourself into a service you don't control.
 
-**Versi terkirim:** 1.8.147~ynh1
+**Versi terkirim:** 1.8.148~ynh1
 
 **Demo:** <https://demo.freescout.net/login>
 
@@ -34,7 +34,7 @@ FreeScout is the super lightweight and powerful free open source help desk and s
 
 - Website aplikasi resmi: <https://freescout.net/>
 - Dokumentasi admin resmi: <https://github.com/freescout-helpdesk/freescout/wiki/Installation-Guide>
-- Repositori kode aplikasi hulu: <https://github.com/freescout-helpdesk/freescout>
+- Depot kode aplikasi hulu: <https://github.com/freescout-helpdesk/freescout>
 - Gudang YunoHost: <https://apps.yunohost.org/app/freescout>
 - Laporkan bug: <https://github.com/YunoHost-Apps/freescout_ynh/issues>
 
