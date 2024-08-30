@@ -19,49 +19,48 @@ timezone=$(cat /etc/timezone)
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 
-chmod ug=rwX,o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod ug=rwX,o-rwx "$install_dir"
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 usermod -g www-data "$app"
 
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding $app's configuration files..." --weight=1
+ynh_script_progression "Adding $app's configuration files..."
 
-ynh_add_config --template=".env.example" --destination="$install_dir/.env"
+ynh_config_add --template=".env.example" --destination="$install_dir/.env"
 
-chmod 600 "$install_dir/.env"
-chown "$app:$app" "$install_dir/.env"
+#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 600 "$install_dir/.env"
+#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown "$app:$app" "$install_dir/.env"
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_add_fpm_config
+ynh_config_add_phpfpm
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
-ynh_add_config --template="cron" --destination="/etc/cron.d/$app"
-chown root: "/etc/cron.d/$app"
-chmod 644 "/etc/cron.d/$app"
+ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
+#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown root: "/etc/cron.d/$app"
+#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 644 "/etc/cron.d/$app"
 
 #=================================================
 # FINAL FREESCOUT INSTALL
 #=================================================
-ynh_script_progression --message="Finalizing $app installation..." --weight=1
+ynh_script_progression "Finalizing $app installation..."
 
 pushd "$install_dir"
-    "php$phpversion" artisan key:generate --no-interaction --force
-    "php$phpversion" artisan freescout:clear-cache
-    "php$phpversion" artisan storage:link
-    "php$phpversion" artisan migrate --no-interaction --force
-    "php$phpversion" artisan freescout:create-user --role="admin" --firstName="$firstname" --lastName="$lastname" --email="$email" --password="$password" --no-interaction
+    "php$php_version" artisan key:generate --no-interaction --force
+    "php$php_version" artisan freescout:clear-cache
+    "php$php_version" artisan storage:link
+    "php$php_version" artisan migrate --no-interaction --force
+    "php$php_version" artisan freescout:create-user --role="admin" --firstName="$firstname" Name="$lastname" --email="$email" --password="$password" --no-interaction
 
     chgrp -R www-data storage bootstrap/cache public/css/builds public/js/builds
     chmod -R ug+rwx storage bootstrap/cache public/css/builds public/js/builds
@@ -70,4 +69,4 @@ popd
 #=================================================
 # END OF SCRIPT
 #=================================================
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
