@@ -7,7 +7,7 @@ name = "FreeScout"
 description.en = "Help desk & shared mailbox"
 description.fr = "Service d'assistance et boîte aux lettres partagée"
 
-version = "1.8.152~ynh1"
+version = "1.8.152~ynh2"
 
 maintainers = []
 
