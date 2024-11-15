@@ -18,7 +18,7 @@ EZ editatu eskuz.
 
 FreeScout is the super lightweight and powerful free open source help desk and shared inbox built with PHP (Laravel framework). Now you can enjoy free Zendesk & Help Scout without giving up privacy or locking yourself into a service you don't control.
 
-**Paketatutako bertsioa:** 1.8.154~ynh1
+**Paketatutako bertsioa:** 1.8.157~ynh1
 
 **Demoa:** <https://demo.freescout.net/login>
 
