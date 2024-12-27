@@ -5,7 +5,9 @@ Il NE doit PAS être modifié à la main.
 
 # FreeScout pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/freescout.svg)](https://ci-apps.yunohost.org/ci/apps/freescout/) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/freescout.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/freescout.maintain.svg)
+[![Niveau d’intégration](https://apps.yunohost.org/badge/integration/freescout)](https://ci-apps.yunohost.org/ci/apps/freescout/)
+![Statut du fonctionnement](https://apps.yunohost.org/badge/state/freescout)
+![Statut de maintenance](https://apps.yunohost.org/badge/maintained/freescout)
 
 [![Installer FreeScout avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=freescout)
 
@@ -18,7 +20,7 @@ Il NE doit PAS être modifié à la main.
 
 FreeScout est un service d'assistance open source gratuit ultra léger et puissant et une boîte de réception partagée construite avec PHP (framework Laravel). Vous pouvez désormais profiter gratuitement de Zendesk et Help Scout sans renoncer à votre confidentialité ni vous enfermer dans un service que vous ne contrôlez pas.
 
-**Version incluse :** 1.8.154~ynh1
+**Version incluse :** 1.8.160~ynh1
 
 **Démo :** <https://demo.freescout.net/login>
 
