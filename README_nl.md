@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # FreeScout voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/freescout.svg)](https://ci-apps.yunohost.org/ci/apps/freescout/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/freescout.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/freescout.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/freescout)](https://ci-apps.yunohost.org/ci/apps/freescout/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/freescout)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/freescout)
 
 [![FreeScout met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=freescout)
 

@@ -5,7 +5,9 @@
 
 # FreeScout для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/freescout.svg)](https://ci-apps.yunohost.org/ci/apps/freescout/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/freescout.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/freescout.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/freescout)](https://ci-apps.yunohost.org/ci/apps/freescout/)
+![Состояние работы](https://apps.yunohost.org/badge/state/freescout)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/freescout)
 
 [![Установите FreeScout с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=freescout)
 

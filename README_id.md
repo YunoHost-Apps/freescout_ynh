@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # FreeScout untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/freescout.svg)](https://ci-apps.yunohost.org/ci/apps/freescout/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/freescout.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/freescout.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/freescout)](https://ci-apps.yunohost.org/ci/apps/freescout/)
+![Status kerja](https://apps.yunohost.org/badge/state/freescout)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/freescout)
 
 [![Pasang FreeScout dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=freescout)
 
