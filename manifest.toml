@@ -25,6 +25,7 @@ architectures = "all"
 multi_instance = true
 
 ldap = false
+
 sso = false
 
 disk = "50M"
@@ -49,10 +50,10 @@ ram.runtime = "50M"
 
     [resources.sources]
 
-        [resources.sources.main]
-        url = "https://github.com/freescout-helpdesk/freescout/archive/refs/tags/1.8.170.tar.gz"
-        sha256 = "675766964b70e4f34e803504609a70a84d529ccc9722e304a2361a57b7fb197d"
-        autoupdate.strategy = "latest_github_tag"
+    [resources.sources.main]
+    url = "https://github.com/freescout-helpdesk/freescout/archive/refs/tags/1.8.170.tar.gz"
+    sha256 = "675766964b70e4f34e803504609a70a84d529ccc9722e304a2361a57b7fb197d"
+    autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
 
