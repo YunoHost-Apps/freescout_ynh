@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
@@ -17,6 +21,7 @@ timezone=$(cat /etc/timezone)
 #=================================================
 ynh_script_progression "Setting up source files..."
 
+# Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir"
 
 usermod -g www-data "$app"
@@ -33,8 +38,10 @@ ynh_config_add --template=".env.example" --destination="$install_dir/.env"
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
 
+# Create a PHP-FPM config (with conf/extra_php-fpm.conf being appended to it)
 ynh_config_add_phpfpm
 
+# Create a dedicated NGINX config using the conf/nginx.conf template
 ynh_config_add_nginx
 
 ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
@@ -49,7 +56,7 @@ pushd "$install_dir"
     "php$php_version" artisan freescout:clear-cache
     "php$php_version" artisan storage:link
     "php$php_version" artisan migrate --no-interaction --force
-    "php$php_version" artisan freescout:create-user --role="admin" --firstName="$firstname" Name="$lastname" --email="$email" --password="$password" --no-interaction
+    "php$php_version" artisan freescout:create-user --role="admin" --firstName="$firstname" --lastName="$lastname" --email="$email" --password="$password" --no-interaction
 
     chgrp -R www-data storage bootstrap/cache public/css/builds public/js/builds
     chmod -R ug+rwx storage bootstrap/cache public/css/builds public/js/builds
@@ -58,4 +65,5 @@ popd
 #=================================================
 # END OF SCRIPT
 #=================================================
+
 ynh_script_progression "Installation of $app completed"

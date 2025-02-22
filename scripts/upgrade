@@ -1,11 +1,16 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# INITIALIZE AND STORE SETTINGS
+# ENSURE DOWNWARD COMPATIBILITY
 #=================================================
+ynh_script_progression "Ensuring downward compatibility..."
 
 email=$(ynh_user_get_info --username="$admin" --key="mail")
 firstname=$(ynh_user_get_info --username="$admin" --key="firstname")
