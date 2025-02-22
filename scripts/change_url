@@ -10,23 +10,23 @@ source /usr/share/yunohost/helpers
 #=================================================
 # MODIFY URL IN NGINX CONF
 #=================================================
-ynh_script_progression --message="Updating NGINX web server configuration..." --weight=1
+ynh_script_progression "Updating NGINX web server configuration..."
 
-ynh_change_url_nginx_config
+# this will most likely adjust NGINX config correctly
+ynh_config_change_url_nginx
 
 #=================================================
 # SPECIFIC MODIFICATIONS
 #=================================================
 
-ynh_replace_string --match_string="APP_URL=https://$old_domain" --replace_string="APP_URL=https://$new_domain" \
-    --target_file="$install_dir/.env"
+ynh_replace --match="APP_URL=https://$old_domain" --replace="APP_URL=https://$new_domain" --file="$install_dir/.env"
 
 pushd "$install_dir"
-    "php$phpversion" artisan freescout:clear-cache
+    "php$php_version" artisan freescout:clear-cache
 popd
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Change of URL completed for $app" --last
+ynh_script_progression "Change of URL completed for $app"
