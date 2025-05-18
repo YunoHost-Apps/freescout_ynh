@@ -14,7 +14,7 @@ source /usr/share/yunohost/helpers
 email=$(ynh_user_get_info --username="$admin" --key="mail")
 firstname=$(ynh_user_get_info --username="$admin" --key="firstname")
 lastname=$(ynh_user_get_info --username="$admin" --key="lastname")
-timezone=$(cat /etc/timezone)
+timezone=$(timedatectl show --value --property=Timezone)
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
