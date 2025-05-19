@@ -7,7 +7,7 @@ name = "FreeScout"
 description.en = "Help desk & shared mailbox"
 description.fr = "Service d'assistance et boîte aux lettres partagée"
 
-version = "1.8.177~ynh1"
+version = "1.8.179~ynh1"
 
 maintainers = []
 
@@ -51,8 +51,8 @@ ram.runtime = "50M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/freescout-helpdesk/freescout/archive/refs/tags/1.8.177.tar.gz"
-    sha256 = "58179e4484dfb76125e8d344ca0cd2998d4d82eea8a8fa45502cadc06bf105e8"
+    url = "https://github.com/freescout-helpdesk/freescout/archive/refs/tags/1.8.179.tar.gz"
+    sha256 = "64d6d37cb24e313ff5a49ecbc4f8f51d05b16b69609423fc9d13c3ad4b391805"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
