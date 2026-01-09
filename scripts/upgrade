@@ -39,8 +39,8 @@ ynh_config_add_nginx
 ynh_script_progression "Install $app"
 
 pushd "$install_dir"
-    "php$php_version" artisan freescout:clear-cache
-    "php$php_version" artisan migrate --no-interaction --force
+    ynh_exec_as_app "php$php_version" artisan freescout:clear-cache
+    ynh_exec_as_app "php$php_version" artisan migrate --no-interaction --force
 popd
 
 #=================================================
