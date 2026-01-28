@@ -21,7 +21,7 @@ ynh_config_change_url_nginx
 ynh_replace --match="APP_URL=https://$old_domain" --replace="APP_URL=https://$new_domain" --file="$install_dir/.env"
 
 pushd "$install_dir"
-    "php$php_version" artisan freescout:clear-cache
+    ynh_exec_as_app "php$php_version" artisan freescout:clear-cache
 popd
 
 #=================================================

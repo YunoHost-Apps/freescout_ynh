@@ -51,12 +51,11 @@ ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
 ynh_script_progression "Finalizing $app installation..."
 
 pushd "$install_dir"
-    "php$php_version" artisan key:generate --no-interaction --force
-    "php$php_version" artisan freescout:clear-cache
-    "php$php_version" artisan storage:link
-    "php$php_version" artisan migrate --no-interaction --force
-    "php$php_version" artisan freescout:create-user --role="admin" --firstName="$firstname" --lastName="$lastname" --email="$email" --password="$password" --no-interaction
-
+    ynh_exec_as_app "php$php_version" artisan key:generate --no-interaction --force
+    ynh_exec_as_app "php$php_version" artisan freescout:clear-cache
+    ynh_exec_as_app "php$php_version" artisan storage:link
+    ynh_exec_as_app "php$php_version" artisan migrate --no-interaction --force
+    ynh_exec_as_app "php$php_version" artisan freescout:create-user --role="admin" --firstName="$firstname" --lastName="$lastname" --email="$email" --password="$password" --no-interaction
     chgrp -R www-data storage bootstrap/cache public/css/builds public/js/builds
     chmod -R ug+rwx storage bootstrap/cache public/css/builds public/js/builds
 popd
