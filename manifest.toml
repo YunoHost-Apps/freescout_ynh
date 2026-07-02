@@ -7,7 +7,7 @@ name = "FreeScout"
 description.en = "Help desk & shared mailbox"
 description.fr = "Service d'assistance et boîte aux lettres partagée"
 
-version = "1.8.225~ynh1"
+version = "1.8.226~ynh1"
 
 maintainers = []
 
@@ -19,7 +19,7 @@ admindoc = "https://github.com/freescout-helpdesk/freescout/wiki/Installation-Gu
 code = "https://github.com/freescout-helpdesk/freescout"
 
 [integration]
-yunohost = ">= 12.1.38"
+yunohost = ">= 12.1.39"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -50,8 +50,8 @@ ram.runtime = "50M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/freescout-helpdesk/freescout/archive/refs/tags/1.8.225.tar.gz"
-    sha256 = "dcec775c7a5456d08cb6e8ac9ed13a8171b3ff6596720f3438969173be1d5a56"
+    url = "https://github.com/freescout-helpdesk/freescout/archive/refs/tags/1.8.226.tar.gz"
+    sha256 = "44a0d200623082b2ad2d5105720196917c3767ca0aa42d6cc889d932bcce33a7"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
